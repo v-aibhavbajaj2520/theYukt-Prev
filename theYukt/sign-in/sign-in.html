@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign In Page</title>
+<script>
+function showOTPInput() {
+  document.getElementById('otp-section').style.display = 'block';
+}
+</script>
+<style>
+.social-login {
+  margin-bottom: 20px;
+}
+
+.social-button {
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.social-button img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+</style>
+</head>
+<body>
+
+<div class="social-login">
+  <button class="social-button" id="google-login" onclick="location.href='/auth/google'">
+    <img src="images/google-logo.png" alt="Google"> 
+  </button>
+  <button class="social-button" id="linkedin-login" onclick="location.href='/auth/linkedin'">
+    <img src="images/linkedin-logo.png" alt="LinkedIn"> 
+  </button>
+  <button class="social-button" id="github-login" onclick="location.href='/auth/github'">
+    <img src="images/github-logo.png" alt="GitHub"> 
+  </button>
+</div>
+
+<h2>Sign In Form</h2>
+
+<form action="/submit-your-form" method="post">
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name" required><br><br>
+  
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" required>
+  <button type="button" onclick="showOTPInput()">Verify</button><br><br>
+  
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" required><br><br>
+  
+  <label for="userid">User ID:</label><br>
+  <input type="text" id="userid" name="userid" required><br><br>
+  
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password" required><br><br>
+  
+  <div id="otp-section" style="display:none;">
+    <label for="otp">OTP:</label><br>
+    <input type="text" id="otp" name="otp" required><br><br>
+  </div>
+  
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
