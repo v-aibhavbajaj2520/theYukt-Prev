@@ -2,85 +2,19 @@
 <html>
 <head>
 <title>theYukt/Sign In Page</title>
-<style>
-/* Styles for navigation bar */
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.navbar img.logo, .navbar img.translate {
-  height: 50px;
-  padding: 5px 20px;
-}
-
-.navbar img.logo {
-  float: left;
-}
-
-.navbar img.translate {
-  float: right;
-}
-
-/* Push down content since navbar is fixed */
-body {
-  padding-top: 60px;
-  font-family: Arial, sans-serif;
-}
-
-/* Existing styles */
-.social-login {
-  margin-bottom: 20px;
-}
-
-.social-button {
-  padding: 10px;
-  margin-right: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.social-button img {
-  width: 20px;
-  height: 20px;
-  vertical-align: middle;
-}
-
-#otp-section {
-  display: none;
-}
-
-#otp-message {
-  color: green;
-  margin-top: 5px;
-}
-</style>
 <script>
-function validateEmail() {
+function showOTPInput() {
   var emailInput = document.getElementById('email');
-  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email pattern check
   var otpSection = document.getElementById('otp-section');
   var otpMessage = document.getElementById('otp-message');
 
-  if (!emailPattern.test(emailInput.value)) {
-    otpMessage.textContent = 'Please use a proper email ID.';
-    otpSection.style.display = 'none';
-  } else {
+  if(emailInput.value) {
     otpSection.style.display = 'block';
-    otpMessage.textContent = 'Please check your email for OTP.';
+    otpMessage.textContent = 'Please check your mail for OTP.';
+  } else {
+    otpSection.style.display = 'none';
+    otpMessage.textContent = '';
   }
-}
-
-function verifyOTP() {
-  // Add your OTP verification logic here
-}
-
-function translatePage() {
-  // Add your translation logic here
 }
 
 // Function to move to the next input field on Enter key press
@@ -104,27 +38,40 @@ function validateForm() {
   return true;
 }
 </script>
+<style>
+.social-login {
+  margin-bottom: 20px;
+}
+
+.social-button {
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.social-button img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+#otp-message {
+  color: green;
+  margin-top: 5px;
+}
+</style>
 </head>
 <body>
-
-<!-- Navigation bar -->
-<div class="navbar">
-  <img src="images/Logo.png" alt="Logo" class="logo">
-  <a href="javascript:void(0);" onclick="translatePage()">
-    <img src="images/translate.png" alt="Translate" class="translate">
-  </a>
-</div>
-
-<!-- Your existing content -->
 <h2>Sign In</h2>
 <div class="social-login">
-  <button class="social-button" onclick="location.href='/auth/google'">
+  <button class="social-button" id="google-login" onclick="location.href='/auth/google'">
     <img src="images/google-logo.png" alt="Google"> 
   </button>
-  <button class="social-button" onclick="location.href='/auth/linkedin'">
+  <button class="social-button" id="linkedin-login" onclick="location.href='/auth/linkedin'">
     <img src="images/linkedin-logo.png" alt="LinkedIn"> 
   </button>
-  <button class="social-button" onclick="location.href='/auth/github'">
+  <button class="social-button" id="github-login" onclick="location.href='/auth/github'">
     <img src="images/github-logo.png" alt="GitHub"> 
   </button>
 </div>
@@ -136,13 +83,12 @@ function validateForm() {
   <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Alphabets only" onkeypress="handleEnterPress(event, 'email')" required><br><br>
   
   <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" onblur="validateEmail()" required><br>
+  <input type="email" id="email" name="email" onblur="showOTPInput()" onkeypress="handleEnterPress(event, 'phone')" required><br>
   <span id="otp-message"></span><br>
   
-  <div id="otp-section">
+  <div id="otp-section" style="display:none;">
     <label for="otp">OTP:</label><br>
-    <input type="text" id="otp" name="otp" pattern="\d{6}" title="6-digit number" required><br>
-    <button type="button" onclick="verifyOTP()">Verify</button><br><br>
+    <input type="text" id="otp" name="otp" pattern="\d{6}" title="6-digit number" onkeypress="handleEnterPress(event, 'phone')" required><br><br>
   </div>
   
   <label for="phone">Phone Number:</label><br>
@@ -153,9 +99,6 @@ function validateForm() {
   
   <label for="password">Password:</label><br>
   <input type="password" id="password" name="password" required><br><br>
-
-  <label for="confirm_password">Confirm Password:</label><br>
-  <input type="password" id="confirm_password" name="confirm_password" required><br><br>
   
   <input type="submit" value="Submit">
 </form>
