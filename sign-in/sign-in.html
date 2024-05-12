@@ -79,6 +79,10 @@ function verifyOTP() {
   // Add your OTP verification logic here
 }
 
+function translatePage() {
+  // Add your translation logic here
+}
+
 // Function to move to the next input field on Enter key press
 function handleEnterPress(event, nextFieldId) {
   if(event.key === 'Enter') {
@@ -106,7 +110,9 @@ function validateForm() {
 <!-- Navigation bar -->
 <div class="navbar">
   <img src="images/Logo.png" alt="Logo" class="logo">
-  <img src="images/translate.png" alt="Translate" class="translate">
+  <a href="javascript:void(0);" onclick="translatePage()">
+    <img src="images/translate.png" alt="Translate" class="translate">
+  </a>
 </div>
 
 <!-- Your existing content -->
