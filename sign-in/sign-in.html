@@ -1,10 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sign In Page</title>
+<title>theYukt/Sign In Page</title>
 <script>
 function showOTPInput() {
-  document.getElementById('otp-section').style.display = 'block';
+  var emailInput = document.getElementById('email');
+  var otpSection = document.getElementById('otp-section');
+  var otpMessage = document.getElementById('otp-message');
+
+  if(emailInput.value) {
+    otpSection.style.display = 'block';
+    otpMessage.textContent = 'Please check your mail for OTP.';
+  } else {
+    otpSection.style.display = 'none';
+    otpMessage.textContent = '';
+  }
+}
+
+// Function to move to the next input field on Enter key press
+function handleEnterPress(event, nextFieldId) {
+  if(event.key === 'Enter') {
+    event.preventDefault(); // Prevent the form from being submitted
+    document.getElementById(nextFieldId).focus(); // Move focus to the next field
+  }
+}
+
+// Function to validate all fields before submitting
+function validateForm() {
+  var inputs = document.querySelectorAll('input[type=text], input[type=email], input[type=tel], input[type=password]');
+  for(var i = 0; i < inputs.length; i++) {
+    if(!inputs[i].value) {
+      alert('Please fill all the fields before submitting.');
+      inputs[i].focus();
+      return false;
+    }
+  }
+  return true;
 }
 </script>
 <style>
@@ -24,13 +55,18 @@ function showOTPInput() {
   height: 20px;
   vertical-align: middle;
 }
+
+#otp-message {
+  color: green;
+  margin-top: 5px;
+}
 </style>
 </head>
 <body>
-
+<h2>Sign In</h2>
 <div class="social-login">
   <button class="social-button" id="google-login" onclick="location.href='/auth/google'">
-    <img src="images/google-logo.png"Google> 
+    <img src="images/google-logo.png" alt="Google"> 
   </button>
   <button class="social-button" id="linkedin-login" onclick="location.href='/auth/linkedin'">
     <img src="images/linkedin-logo.png" alt="LinkedIn"> 
@@ -40,29 +76,29 @@ function showOTPInput() {
   </button>
 </div>
 
-<h2>Sign In Form</h2>
+<h3>OR</h3>
 
-<form action="/submit-your-form" method="post">
+<form action="/submit-your-form" method="post" onsubmit="return validateForm()">
   <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" required><br><br>
+  <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Alphabets only" onkeypress="handleEnterPress(event, 'email')" required><br><br>
   
   <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" required>
-  <button type="button" onclick="showOTPInput()">Verify</button><br><br>
-  
-  <label for="phone">Phone Number:</label><br>
-  <input type="tel" id="phone" name="phone" required><br><br>
-  
-  <label for="userid">User ID:</label><br>
-  <input type="text" id="userid" name="userid" required><br><br>
-  
-  <label for="password">Password:</label><br>
-  <input type="password" id="password" name="password" required><br><br>
+  <input type="email" id="email" name="email" onblur="showOTPInput()" onkeypress="handleEnterPress(event, 'phone')" required><br>
+  <span id="otp-message"></span><br>
   
   <div id="otp-section" style="display:none;">
     <label for="otp">OTP:</label><br>
-    <input type="text" id="otp" name="otp" required><br><br>
+    <input type="text" id="otp" name="otp" pattern="\d{6}" title="6-digit number" onkeypress="handleEnterPress(event, 'phone')" required><br><br>
   </div>
+  
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" pattern="\d{10}" title="10-digit number" onkeypress="handleEnterPress(event, 'userid')" required><br><br>
+  
+  <label for="userid">User ID:</label><br>
+  <input type="text" id="userid" name="userid" onkeypress="handleEnterPress(event, 'password')" required><br><br>
+  
+  <label for="password">Password:</label><br>
+  <input type="password" id="password" name="password" required><br><br>
   
   <input type="submit" value="Submit">
 </form>
