@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    font-family: denton;
+    border: border-box;
+    text-decoration: none;
+    background-color: #000000;
+    color: white;
+}
+
+.tagLine{
+    font-size: 85px;
+}
+
+.nav{
+    display: flex;
+}
+
+.logo{
+    background-image: url(images/Logo.jpeg);
+    height: 100px;
+    width: 100px;
+    background-size: cover ;
+    background-position: center;
+    position: relative;
+}

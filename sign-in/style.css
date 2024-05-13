@@ -14,6 +14,8 @@ body {
   top: 12%;
   right: 240px;
   height: 540px;
+  display: flex;
+  /* justify-content: ; */
   width: 65%;
   border-radius: 15px;
   background-color: #0a0a0a;
@@ -69,6 +71,7 @@ body {
 }
 
 .begin input {
+  /* size:  */
   background-color: transparent;
   border: 0.5px solid white;
   border-radius: 5px;
@@ -79,6 +82,8 @@ body {
   .card {
       width: 80%; /* Adjust the width as needed */
       right: 10%; /* Adjust the right positioning as needed */
+      display: flex;
+      flex-shrink: 50% ;
   }
 
   .heading {
@@ -101,6 +106,8 @@ body {
   .card {
       width: 90%; /* Adjust the width as needed */
       right: 5%; /* Adjust the right positioning as needed */
+      display: flex;
+      flex-shrink: 70% ;
   }
 
   .heading {
