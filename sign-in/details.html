@@ -4,20 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Personal Details Form</title>
-<style>
+<link rel="stylesheet" href="details-style.css">
+<!-- <style>
   .techstack-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: 5px 10px;
-    margin: 2px;
+    margin-right: 5px;
     border: 1px solid #ddd;
     border-radius: 4px;
     background-color: #f7f7f7;
-    position: relative;
   }
   .delete-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
+    margin-left: 5px;
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -26,13 +25,53 @@
   .delete-btn:hover {
     color: red;
   }
+  .badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  .badge-wrapper {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+  }
+  .separator {
+    width: 1px;
+    height: 24px; /* Adjust the height to match your badge size */
+    background-color: #ddd;
+    margin-right: 5px;
+  }
   .hidden {
     display: none;
   }
-</style>
+  .techstack-dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  .dropdown-content div {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  .dropdown-content div:hover {
+    background-color: #ddd;
+  }
+  .show {display: block;}
+</style> -->
 </head>
 <body>
-
+<div class="card">
 <h2>Personal Details</h2>
 
 <form action="/submit-your-details" method="post">
@@ -49,46 +88,83 @@
   <input type="url" id="linkedinLink" name="linkedinLink" required ><br><br>
   
   <label for="techStack">Tech Stack Abilities:</label><br>
-  <select id="techStack" name="techStack" >
-    <option value="">Tech Stack</option>
-    <option value="JavaScript">JavaScript</option>
-    <option value="Python">Python</option>
-    <option value="Java">Java</option>
-    <option value="HTML">HTML</option>
-    <option value="CSS">CSS</option>
-    <option value="Ruby">Ruby</option>
-    <!-- Add other programming languages as needed -->
-  </select><br><br>
+  <div class="techstack-dropdown">
+    <input type="text" id="techStackInput" placeholder="Search tech stack..." onkeyup="filterFunction()">
+    <div id="techStackDropdown" class="dropdown-content">
+      <div onclick="selectTechStack('JavaScript')">JavaScript</div>
+      <div onclick="selectTechStack('Python')">Python</div>
+      <div onclick="selectTechStack('Java')">Java</div>
+      <div onclick="selectTechStack('HTML')">HTML</div>
+      <div onclick="selectTechStack('CSS')">CSS</div>
+      <div onclick="selectTechStack('Ruby')">Ruby</div>
+      <!-- Add other programming languages as needed -->
+    </div>
+  </div><br><br>
   
-  <div id="techStackContainer"></div>
+  <div id="techStackContainer" class="badge-container"></div>
   
   <input type="submit" value="Submit">
 </form>
-
+</div>
 <script>
-document.getElementById('linkedinLink').addEventListener('focus', function() {
-  document.getElementById('techStack').classList.remove('hidden');
-});
+var badgeCount = 0;
 
-document.getElementById('techStack').addEventListener('change', function() {
-  var selectedLanguage = this.options[this.selectedIndex].value;
-  if(selectedLanguage !== '' && !document.getElementById(selectedLanguage)) {
+function filterFunction() {
+  var input, filter, div, i;
+  input = document.getElementById("techStackInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("techStackDropdown");
+  div.style.display = "block";
+  div = div.getElementsByTagName("div");
+  for (i = 0; i < div.length; i++) {
+    txtValue = div[i].textContent || div[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      div[i].style.display = "";
+    } else {
+      div[i].style.display = "none";
+    }
+  }
+}
+
+function selectTechStack(tech) {
+  if(!document.getElementById(tech)) {
+    badgeCount++;
+    var badgeWrapper = document.createElement('div');
+    badgeWrapper.className = 'badge-wrapper';
+
+    if (badgeCount % 3 === 1 && badgeCount !== 1) {
+      badgeWrapper.style.marginTop = '10px';
+    }
+
     var badge = document.createElement('span');
-    badge.id = selectedLanguage;
+    badge.id = tech;
     badge.className = 'techstack-badge';
-    badge.textContent = selectedLanguage;
+    badge.textContent = tech;
+    badgeWrapper.appendChild(badge);
 
     var deleteBtn = document.createElement('button');
     deleteBtn.className = 'delete-btn';
     deleteBtn.innerHTML = '×';
     deleteBtn.onclick = function() {
-      badge.remove();
+      badgeWrapper.remove();
+      badgeCount--;
     };
-    badge.appendChild(deleteBtn);
+    badgeWrapper.appendChild(deleteBtn);
 
-    document.getElementById('techStackContainer').appendChild(badge);
-    this.selectedIndex = 0; // Reset dropdown after selection
+    if (badgeCount % 3 !== 0) {
+      var separator = document.createElement('div');
+      separator.className = 'separator';
+      badgeWrapper.appendChild(separator);
+    }
+
+    document.getElementById('techStackContainer').appendChild(badgeWrapper);
   }
+  document.getElementById("techStackDropdown").style.display = "none";
+  document.getElementById("techStackInput").value = "";
+}
+
+document.getElementById('linkedinLink').addEventListener('focus', function() {
+  document.getElementById('techStackInput').classList.remove('hidden');
 });
 </script>
 
