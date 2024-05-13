@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>theYukt/Sign In Page</title>
-<style>
+<link rel="stylesheet" href="style.css">
+<!-- <style>
 /* Styles for navigation bar */
 .navbar {
   overflow: hidden;
@@ -58,7 +59,7 @@ body {
   color: green;
   margin-top: 5px;
 }
-</style>
+</style> -->
 <script>
 function validateEmail() {
   var emailInput = document.getElementById('email');
@@ -106,59 +107,58 @@ function validateForm() {
 </script>
 </head>
 <body>
+  <div class="card">
+    <div class="logo">
+      <img src="images/Logo.png" alt="Logo" class="logo">
+    </div>
 
-<!-- Navigation bar -->
-<div class="navbar">
-  <img src="images/Logo.png" alt="Logo" class="logo">
-  <a href="javascript:void(0);" onclick="translatePage()">
-    <img src="images/translate.png" alt="Translate" class="translate">
-  </a>
-</div>
+    <!-- Your existing content -->
+    <h1 class="heading">Sign In</h1>
+    <div class="social-login">
+      <button class="social-button" onclick="location.href='/auth/google'">
+        <img src="images/google-logo.png" alt="Google"> 
+      </button>
+      <button class="social-button" onclick="location.href='/auth/linkedin'">
+        <img src="images/linkedin-logo.png" alt="LinkedIn" style="width: 30px;
+        height: 30px;"> 
+      </button>
+      <button class="social-button" onclick="location.href='/auth/github'">
+        <img src="images/github-logo.png" alt="GitHub" style="width: 34px;
+        height: 22px;"> 
+      </button>
+    </div>
 
-<!-- Your existing content -->
-<h2>Sign In</h2>
-<div class="social-login">
-  <button class="social-button" onclick="location.href='/auth/google'">
-    <img src="images/google-logo.png" alt="Google"> 
-  </button>
-  <button class="social-button" onclick="location.href='/auth/linkedin'">
-    <img src="images/linkedin-logo.png" alt="LinkedIn"> 
-  </button>
-  <button class="social-button" onclick="location.href='/auth/github'">
-    <img src="images/github-logo.png" alt="GitHub"> 
-  </button>
-</div>
+    <h2 style="position: absolute; top: 87px; right: 280px;">OR</h2>
+    <div class="begin">
+    <form action="/submit-your-form" method="post" onsubmit="return validateForm()">
+      <label for="name">Name:</label><br>
+      <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Alphabets only" onkeypress="handleEnterPress(event, 'email')" required><br><br>
+      
+      <label for="email">Email:</label><br>
+      <input type="email" id="email" name="email" onblur="validateEmail()" required><br>
+      <span id="otp-message"></span><br>
+      
+      <div id="otp-section">
+        <label for="otp">OTP:</label><br>
+        <input type="text" id="otp" name="otp" pattern="\d{6}" title="6-digit number" required><br>
+        <button type="button" onclick="verifyOTP()">Verify</button><br><br>
+      </div>
+      
+      <label for="phone">Phone Number:</label><br>
+      <input type="tel" id="phone" name="phone" pattern="\d{10}" title="10-digit number" onkeypress="handleEnterPress(event, 'userid')" required><br><br>
+      
+      <label for="userid">Username:</label><br>
+      <input type="text" id="userid" name="userid" onkeypress="handleEnterPress(event, 'password')" required><br><br>
+      
+      <label for="password">Password:</label><br>
+      <input type="password" id="password" name="password" required><br><br>
 
-<h3>OR</h3>
-
-<form action="/submit-your-form" method="post" onsubmit="return validateForm()">
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" pattern="[A-Za-z\s]+" title="Alphabets only" onkeypress="handleEnterPress(event, 'email')" required><br><br>
-  
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" onblur="validateEmail()" required><br>
-  <span id="otp-message"></span><br>
-  
-  <div id="otp-section">
-    <label for="otp">OTP:</label><br>
-    <input type="text" id="otp" name="otp" pattern="\d{6}" title="6-digit number" required><br>
-    <button type="button" onclick="verifyOTP()">Verify</button><br><br>
+      <label for="confirm_password">Confirm Password:</label><br>
+      <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+      
+      <input type="submit" value="Next" style="position: absolute; right: 63px;">
+    </form>
   </div>
-  
-  <label for="phone">Phone Number:</label><br>
-  <input type="tel" id="phone" name="phone" pattern="\d{10}" title="10-digit number" onkeypress="handleEnterPress(event, 'userid')" required><br><br>
-  
-  <label for="userid">User ID:</label><br>
-  <input type="text" id="userid" name="userid" onkeypress="handleEnterPress(event, 'password')" required><br><br>
-  
-  <label for="password">Password:</label><br>
-  <input type="password" id="password" name="password" required><br><br>
-
-  <label for="confirm_password">Confirm Password:</label><br>
-  <input type="password" id="confirm_password" name="confirm_password" required><br><br>
-  
-  <input type="submit" value="Submit">
-</form>
-
+</div>
 </body>
 </html>

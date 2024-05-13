@@ -1,0 +1,92 @@
+*{
+    color: whitesmoke;
+    border: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background-color: #000000;
+}
+
+.begin input{
+    background-color: transparent;
+    border: 0.5px solid white;
+    border-radius: 5px;
+}
+
+
+/* Styles for navigation bar */
+.logo {
+  overflow: hidden;
+  position: fixed;
+  top: 135px;
+  left: 310px;
+  width: 400px;
+  height: 400px;
+  z-index: 1000;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    position: fixed;
+    top: 12%;
+    right: 240px;
+    height: 540px;
+    width: 65%;
+    border-radius: 15px;
+    background-color: #0a0a0a;
+    transition: 0.3s;
+  }
+
+.card:hover{
+    box-shadow: 0 4px 12px 4px #333;
+}
+
+
+/* Push down content since navbar is fixed */
+
+.heading{
+    position: fixed;
+    top: 75px;
+    right: 470px;
+
+}
+
+/* Existing styles */
+.social-login {
+    position: absolute;
+    background-color: transparent;
+    width: 200px;
+    top: 60px;
+    right: 175px;
+    margin-bottom: 20px;
+}
+
+.social-button {
+    background-color: transparent;
+    padding: 10px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.social-button img {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+#otp-section {
+  display: none;
+}
+
+#otp-message {
+  color: green;
+  margin-top: 5px;
+}
+
+.begin{
+    position: absolute;
+    top: 150px;
+    right: 200px;
+}
