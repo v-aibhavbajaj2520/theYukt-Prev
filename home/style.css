@@ -3,23 +3,52 @@
     font-family: denton;
     border: border-box;
     text-decoration: none;
-    background-color: #000000;
+    background-color: #000000f3;
     color: white;
 }
 
-.tagLine{
-    font-size: 85px;
+.section{
+    height: 50vh; 
 }
 
 .nav{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo{
     background-image: url(images/logo-main-page.png);
-    height: 100px;
-    width: 100px;
+    background-color: transparent ;
+    height: 150px;
+    width: 150px;
     background-size: cover ;
     background-position: center;
-    position: relative;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+
 }
+
+.tagLine-1{
+    font-size: 6.8rem;
+    background-color: transparent;
+    position: absolute;
+    top: 12rem;
+    font-weight: bolder;
+}
+
+.tagLine-2{
+    font-size: 1.5rem;
+    background-color: transparent;
+    position: absolute;
+    top: 26.9rem;
+    right: 17rem;
+}
+
+/* .over{
+    height: 1px;
+    position: relative;
+    top: 820px;
+    background-color: rgb(62, 61, 61);
+} */
