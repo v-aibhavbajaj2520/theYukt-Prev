@@ -1,73 +1,50 @@
-*{
-    color: whitesmoke;
-    border: 0;
-    font-family: 'Courier New', Courier, monospace;
+* {
+  color: whitesmoke;
+  border: 0;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-body{
-    background-color: #000000;
+body {
+  background-color: #000000;
 }
 
-.begin input{
-    background-color: transparent;
-    border: 0.5px solid white;
-    border-radius: 5px;
-}
-
-
-/* Styles for navigation bar */
-.logo {
-  overflow: hidden;
-  position: fixed;
-  top: 135px;
-  left: 310px;
-  width: 400px;
-  height: 400px;
-  z-index: 1000;
-}
 
 .card {
-    /* Add shadows to create the "card" effect */
-    position: fixed;
-    top: 12%;
-    right: 240px;
-    height: 540px;
-    width: 65%;
-    border-radius: 15px;
-    background-color: #0a0a0a;
-    transition: 0.3s;
-  }
-
-.card:hover{
-    box-shadow: 0 4px 12px 4px #333;
+  position: fixed;
+  top: 12%;
+  right: 240px;
+  height: 540px;
+  width: 65%;
+  border-radius: 15px;
+  background-color: #0a0a0a;
+  transition: 0.3s;
 }
 
-
-/* Push down content since navbar is fixed */
-
-.heading{
-    position: fixed;
-    top: 75px;
-    right: 470px;
-
+.card:hover {
+  box-shadow: 0 4px 12px 4px #333;
 }
 
-/* Existing styles */
+.heading {
+  position: fixed;
+  top: 75px;
+  right: 470px;
+}
+
 .social-login {
-    position: absolute;
-    background-color: transparent;
-    width: 200px;
-    top: 60px;
-    right: 175px;
-    margin-bottom: 20px;
+  position: absolute;
+  background-color: transparent;
+  width: 200px;
+  top: 60px;
+  right: 175px;
+  margin-bottom: 20px;
 }
 
 .social-button {
-    background-color: transparent;
-    padding: 10px;
-    margin-right: 10px;
-    border: none;
-    cursor: pointer;
+  background-color: transparent;
+  padding: 10px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 .social-button img {
@@ -85,8 +62,58 @@ body{
   margin-top: 5px;
 }
 
-.begin{
-    position: absolute;
-    top: 150px;
-    right: 200px;
+.begin {
+  position: absolute;
+  top: 150px;
+  right: 200px;
+}
+
+.begin input {
+  background-color: transparent;
+  border: 0.5px solid white;
+  border-radius: 5px;
+}
+
+/* Media queries for smaller devices */
+@media screen and (max-width: 768px) {
+  .card {
+      width: 80%; /* Adjust the width as needed */
+      right: 10%; /* Adjust the right positioning as needed */
+  }
+
+  .heading {
+      right: 30%; /* Adjust the right positioning as needed */
+  }
+
+  .social-login {
+      width: 100%; /* Adjust the width as needed */
+      right: 0;
+      text-align: center;
+  }
+
+  .begin {
+      right: 10%; /* Adjust the right positioning as needed */
+  }
+}
+
+/* Media queries for even smaller devices, like mobile phones */
+@media screen and (max-width: 480px) {
+  .card {
+      width: 90%; /* Adjust the width as needed */
+      right: 5%; /* Adjust the right positioning as needed */
+  }
+
+  .heading {
+      right: 20%; /* Adjust the right positioning as needed */
+  }
+
+  .social-login {
+      width: 100%; /* Adjust the width as needed */
+      right: 0;
+      text-align: center;
+  }
+
+  .begin {
+      right: 5%; /* Adjust the right positioning as needed */
+  }
 }
