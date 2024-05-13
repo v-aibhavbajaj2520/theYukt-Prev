@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Details Form</title>
+<style>
+  .techstack-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f7f7f7;
+    position: relative;
+  }
+  .delete-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .delete-btn:hover {
+    color: red;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<h2>Personal Details</h2>
+
+<form action="/submit-your-details" method="post">
+  <label for="collegeName">College Name:</label><br>
+  <input type="text" id="collegeName" name="collegeName" required><br><br>
+  
+  <label for="location">Location:</label><br>
+  <input type="text" id="location" name="location" required><br><br>
+  
+  <label for="githubLink">GitHub Profile Link:</label><br>
+  <input type="url" id="githubLink" name="githubLink" required><br><br>
+  
+  <label for="linkedinLink">LinkedIn Profile Link:</label><br>
+  <input type="url" id="linkedinLink" name="linkedinLink" required ><br><br>
+  
+  <label for="techStack">Tech Stack Abilities:</label><br>
+  <select id="techStack" name="techStack" >
+    <option value="">Tech Stack</option>
+    <option value="JavaScript">JavaScript</option>
+    <option value="Python">Python</option>
+    <option value="Java">Java</option>
+    <option value="HTML">HTML</option>
+    <option value="CSS">CSS</option>
+    <option value="Ruby">Ruby</option>
+    <!-- Add other programming languages as needed -->
+  </select><br><br>
+  
+  <div id="techStackContainer"></div>
+  
+  <input type="submit" value="Submit">
+</form>
+
+<script>
+document.getElementById('linkedinLink').addEventListener('focus', function() {
+  document.getElementById('techStack').classList.remove('hidden');
+});
+
+document.getElementById('techStack').addEventListener('change', function() {
+  var selectedLanguage = this.options[this.selectedIndex].value;
+  if(selectedLanguage !== '' && !document.getElementById(selectedLanguage)) {
+    var badge = document.createElement('span');
+    badge.id = selectedLanguage;
+    badge.className = 'techstack-badge';
+    badge.textContent = selectedLanguage;
+
+    var deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.innerHTML = '×';
+    deleteBtn.onclick = function() {
+      badge.remove();
+    };
+    badge.appendChild(deleteBtn);
+
+    document.getElementById('techStackContainer').appendChild(badge);
+    this.selectedIndex = 0; // Reset dropdown after selection
+  }
+});
+</script>
+
+</body>
+</html>
