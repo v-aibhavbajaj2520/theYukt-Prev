@@ -59,22 +59,53 @@
       <option value="HTML">HTML</option>
       <option value="CSS">CSS</option>
       <option value="Ruby">Ruby</option>
-      <option value="C">C</option>
-      <option value="C++">C++</option>
       <option value="C#">C#</option>
-      <option value="R">R</option>
+      <option value="TypeScript">TypeScript</option>
+      <option value="Vite">Vite</option>
       <option value="Swift">Swift</option>
       <option value="Kotlin">Kotlin</option>
-      <option value="Golang">Golang</option>
+      <option value="Go">Go</option>
+      <option value="Rust">Rust</option>
       <option value="PHP">PHP</option>
-      <option value="Crystal">Crystal</option>
       <option value="Dart">Dart</option>
       <option value="Elixir">Elixir</option>
-      <option value="Vite">Vite</option>
+      <option value="Crystal">Crystal</option>
+      <option value="C">C</option>
+      <option value="C++">C++</option>
+      <option value="Scala">Scala</option>
+      <option value="Perl">Perl</option>
+      <option value="Haskell">Haskell</option>
+      <option value="Lua">Lua</option>
+      <option value="Clojure">Clojure</option>
+      <option value="Erlang">Erlang</option>
+      <option value="Julia">Julia</option>
+      <option value="F#">F#</option>
+      <option value="R">R</option>
+      <!-- Frameworks -->
       <option value="React">React</option>
+      <option value="Angular">Angular</option>
+      <option value="Vue.js">Vue.js</option>
+      <option value="Django">Django</option>
       <option value="Flask">Flask</option>
-      <option value="Tensor Flow">Tensor Flow</option>
-      <option value="Others">Others</option>
+      <option value="Ruby on Rails">Ruby on Rails</option>
+      <option value="Spring">Spring</option>
+      <option value="Express">Express</option>
+      <option value="ASP.NET">ASP.NET</option>
+      <option value="Laravel">Laravel</option>
+      <option value="Meteor">Meteor</option>
+      <option value="Svelte">Svelte</option>
+      <option value="Next.js">Next.js</option>
+      <option value="Nuxt.js">Nuxt.js</option>
+      <option value="Gatsby">Gatsby</option>
+      <option value="Flutter">Flutter</option>
+      <option value="React Native">React Native</option>
+      <option value="Ionic">Ionic</option>
+      <option value="Xamarin">Xamarin</option>
+      <option value="Node.js">Node.js</option>
+      <option value="Other">Other</option>
+
+<!-- Add other programming languages and frameworks as needed -->
+
       <!-- Add other programming languages as needed -->
     </select>
   </div><br><br>
@@ -89,7 +120,37 @@ var badgeCount = 0;
 var localMediaStream = null; // Added a variable to hold the stream globally
 
 function selectTechStack(tech) {
-  // Tech stack selection code
+  if(tech !== "" && !document.getElementById(tech)) {
+    badgeCount++;
+    var badgeWrapper = document.createElement('div');
+    badgeWrapper.className = 'badge-wrapper';
+    badgeWrapper.style.display = 'inline-flex'; // Use inline-flex for alignment in a row
+
+    var badge = document.createElement('span');
+    badge.id = tech;
+    badge.className = 'techstack-badge';
+    badge.textContent = tech;
+    badgeWrapper.appendChild(badge);
+
+    var deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.innerHTML = '×';
+    deleteBtn.onclick = function() {
+      badgeWrapper.remove();
+      badgeCount--;
+    };
+    badgeWrapper.appendChild(deleteBtn);
+
+    var line = document.createElement('span');
+    line.className = 'badge-divider';
+    line.style.borderLeft = '1px solid #000'; // Style the line
+    line.style.height = '20px'; // Match the height of the badges
+    line.style.margin = '0 5px'; // Add some spacing around the line
+    badgeWrapper.appendChild(line);
+
+    document.getElementById('techStackContainer').appendChild(badgeWrapper);
+  }
+  document.getElementById("techStackDropdown").value = ""; // Reset dropdown
 }
 
 // Open Camera functionality
