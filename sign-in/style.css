@@ -1,5 +1,6 @@
 * {
   color: whitesmoke;
+
   border: 0;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -9,12 +10,21 @@ body {
 }
 
 
+
+.begin{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .card {
   position: fixed;
-  top: 12%;
-  right: 240px;
-  height: 540px;
+  top:10%;
+  right: 60vh;
+  height: 80vh;
   display: flex;
+  flex-direction: column;
   /* justify-content: ; */
   width: 65%;
   border-radius: 15px;
@@ -78,10 +88,10 @@ body {
 }
 
 /* Media queries for smaller devices */
-@media screen and (max-width: 768px) {
+@media only screen and (max-width: 400px) {
   .card {
       width: 80%; /* Adjust the width as needed */
-      right: 10%; /* Adjust the right positioning as needed */
+      height: 80%; /* Adjust the right positioning as needed */
       display: flex;
       flex-shrink: 50% ;
   }
@@ -102,11 +112,13 @@ body {
 }
 
 /* Media queries for even smaller devices, like mobile phones */
-@media screen and (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .card {
       width: 90%; /* Adjust the width as needed */
       right: 5%; /* Adjust the right positioning as needed */
       display: flex;
+      flex-direction: column;
+      align-items: center ;
       flex-shrink: 70% ;
   }
 
