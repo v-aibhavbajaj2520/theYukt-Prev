@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>theYukt/Sign In Page</title>
-<link rel="stylesheet" href="C:\Users\vaibh\OneDrive\Desktop\theYukt\sign-in\static\style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
 <script>
 function validateEmail() {
@@ -53,22 +53,22 @@ function validateForm() {
 <body>
   <div class="card">
     <div class="logo">
-      <img src="images/logo-main-page.png" alt="Logo" class="logo">
-    </div>
+      <img src="{{ url_for('static', filename='images/logo-main-page.png') }}" alt="Logo" class="logo">
+  </div>
 
     <!-- Your existing content -->
     <h1 class="heading">Sign In</h1>
-    <div class="social-login">
-      <button class="social-button" onclick="location.href='/auth/google'">
-        <img src="images/google-logo.png" alt="Google"> 
-      </button>
-      <button class="social-button" onclick="location.href='/auth/linkedin'">
-        <img src="images/linkedin-logo.png" alt="LinkedIn" style="width: 30px; height: 30px;"> 
-      </button>
-      <button class="social-button" onclick="location.href='/auth/github'">
-        <img src="images/github-logo.png" alt="GitHub" style="width: 34px; height: 22px;"> 
-      </button>
-    </div>
+        <div class="social-login">
+            <button class="social-button" onclick="location.href='/auth/google'">
+                <img src="{{ url_for('static', filename='images/google-logo.png') }}" alt="Google"> 
+            </button>
+            <button class="social-button" onclick="location.href='/auth/linkedin'">
+                <img src="{{ url_for('static', filename='images/linkedin-logo.png') }}" alt="LinkedIn" style="width: 30px; height: 30px;"> 
+            </button>
+            <button class="social-button" onclick="location.href='/auth/github'">
+                <img src="{{ url_for('static', filename='images/github-logo.png') }}" alt="GitHub" style="width: 34px; height: 22px;"> 
+            </button>
+        </div>
 
     <h2 style="position: absolute; top: 87px; right: 280px;">OR</h2>
     <div class="begin">
