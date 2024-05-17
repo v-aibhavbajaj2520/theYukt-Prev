@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Details Form</title>
+<link rel="stylesheet" href="static/details-style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Include Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+<body>
+<div class="card">
+<pre style="color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: 500; font-size: 40px;"> Personal Details</pre>
+<div class="logo"></div>
+<!-- Profile Picture Section -->
+
+<div class="profile-picture-container">
+  <div class="icon-1">
+    <i class="fa-solid fa-user" style="color: #ffffff;"></i>
+    <img id="previewImage" src="#" alt="Profile Preview">
+    <video id="cameraStream" autoplay></video>
+    <canvas id="canvas"></canvas>
+  </div>
+  <button id="openCamera">Open Camera</button>
+  <button id="uploadGallery">Upload from Gallery</button>
+  <input type="file" id="profilePicture" name="profilePicture" accept="image/*" style="display: none;">
+  <button id="capture" style="display: none;">Capture</button>
+</div>
+
+
+<div class="input-form">
+<!-- Personal Details Section -->
+<form action="submit-your-details" method="post" class="">
+  <label for="collegeName">College Name:</label><br>
+  <select id="collegeName" name="collegeName" required style="width: 100%;">
+    <option value="">Select College</option>
+    <!-- College options will be added dynamically from CSV -->
+  </select><br><br>
+  
+  <label for="course">Course:</label><br>
+  <input type="text" id="course" name="course" required><br><br>
+  
+  <label for="year">Year:</label><br>
+  <div class="dropdown">
+    <select id="year" name="year" required>
+      <option value="">Select Year</option>
+      <option value="first">First</option>
+      <option value="second">Second</option>
+      <option value="third">Third</option>
+      <option value="fourth">Fourth</option>
+    </select>
+  </div><br><br>
+  
+  <label for="location">Location:</label><br>
+  <input type="text" id="location" name="location" required><br><br>
+  
+  <label for="githubLink">GitHub Profile Link:</label><br>
+  <input type="url" id="githubLink" name="githubLink" required><br><br>
+  
+  <label for="linkedinLink">LinkedIn Profile Link:</label><br>
+  <input type="url" id="linkedinLink" name="linkedinLink" required><br><br>
+  
+  <label for="techStack">Tech Stack Abilities:</label><br>
+  <div class="techstack-dropdown">
+    <select id="techStackDropdown" onchange="selectTechStack(this.value)">
+      <option value="">Select Tech Stack</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Python">Python</option>
+      <option value="Java">Java</option>
+      <option value="HTML">HTML</option>
+      <option value="CSS">CSS</option>
+      <option value="Ruby">Ruby</option>
+      <option value="C#">C#</option>
+      <option value="TypeScript">TypeScript</option>
+      <option value="Vite">Vite</option>
+      <option value="Swift">Swift</option>
+      <option value="Kotlin">Kotlin</option>
+      <option value="Go">Go</option>
+      <option value="Rust">Rust</option>
+      <option value="PHP">PHP</option>
+      <option value="Dart">Dart</option>
+      <option value="Elixir">Elixir</option>
+      <option value="Crystal">Crystal</option>
+      <option value="C">C</option>
+      <option value="C++">C++</option>
+      <option value="Scala">Scala</option>
+      <option value="Perl">Perl</option>
+      <option value="Haskell">Haskell</option>
+      <option value="Lua">Lua</option>
+      <option value="Clojure">Clojure</option>
+      <option value="Erlang">Erlang</option>
+      <option value="Julia">Julia</option>
+      <option value="F#">F#</option>
+      <option value="R">R</option>
+      <!-- Frameworks -->
+      <option value="React">React</option>
+      <option value="Angular">Angular</option>
+      <option value="Vue.js">Vue.js</option>
+      <option value="Django">Django</option>
+      <option value="Flask">Flask</option>
+      <option value="Ruby on Rails">Ruby on Rails</option>
+      <option value="Spring">Spring</option>
+      <option value="Express">Express</option>
+      <option value="ASP.NET">ASP.NET</option>
+      <option value="Laravel">Laravel</option>
+      <option value="Meteor">Meteor</option>
+      <option value="Svelte">Svelte</option>
+      <option value="Next.js">Next.js</option>
+      <option value="Nuxt.js">Nuxt.js</option>
+      <option value="Gatsby">Gatsby</option>
+      <option value="Flutter">Flutter</option>
+      <option value="React Native">React Native</option>
+      <option value="Ionic">Ionic</option>
+      <option value="Xamarin">Xamarin</option>
+      <option value="Node.js">Node.js</option>
+      <option value="Other">Other</option>
+    </select>
+  </div><br><br>
+  
+  <div id="techStackContainer" class="badge-container"></div>
+  
+  <input type="submit" value="Submit">
+</form>
+</div>
+</div>
+<!-- Include Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+var badgeCount = 0;
+var localMediaStream = null; // Added a variable to hold the stream globally
+
+function selectTechStack(tech) {
+  if(tech !== "" && !document.getElementById(tech)) {
+    badgeCount++;
+    var badgeWrapper = document.createElement('div');
+    badgeWrapper.className = 'badge-wrapper';
+    badgeWrapper.style.display = 'inline-flex'; // Use inline-flex for alignment in a row
+
+    var badge = document.createElement('span');
+    badge.id = tech;
+    badge.className = 'techstack-badge';
+    badge.textContent = tech;
+    badgeWrapper.appendChild(badge);
+
+    var deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.innerHTML = '×';
+    deleteBtn.onclick = function() {
+      badgeWrapper.remove();
+      badgeCount--;
+    };
+    badgeWrapper.appendChild(deleteBtn);
+
+    var line = document.createElement('span');
+    line.className = 'badge-divider';
+    line.style.borderLeft = '1px solid #000'; // Style the line
+    line.style.height = '20px'; // Match the height of the badges
+    line.style.margin = '0 5px'; // Add some spacing around the line
+    badgeWrapper.appendChild(line);
+
+    document.getElementById('techStackContainer').appendChild(badgeWrapper);
+  }
+  document.getElementById("techStackDropdown").value = ""; // Reset dropdown
+}
+
+// Open Camera functionality
+document.getElementById('openCamera').addEventListener('click', function() {
+  var video = document.getElementById('cameraStream');
+  var captureButton = document.getElementById('capture');
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(function(stream) {
+        localMediaStream = stream; // Assign the stream to the global variable
+        video.srcObject = stream;
+        video.style.display = 'block';
+        captureButton.style.display = 'block';
+      })
+      .catch(function(error) {
+        console.log("Something went wrong accessing the camera!");
+      });
+  }
+});
+
+// Capture functionality
+document.getElementById('capture').addEventListener('click', function() {
+  var canvas = document.getElementById('canvas');
+  var video = document.getElementById('cameraStream');
+  if (localMediaStream) {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0);
+    // Convert canvas to image
+    var dataUrl = canvas.toDataURL('image/png');
+    document.getElementById('previewImage').src = dataUrl;
+    document.getElementById('previewImage').style.display = 'block';
+    video.style.display = 'none';
+    this.style.display = 'none';
+    localMediaStream.getTracks().forEach(function(track) { // Stop each track on the stream
+      track.stop();
+    });
+    localMediaStream = null; // Clear the global stream variable
+  }
+});
+
+// Upload from Gallery functionality
+document.getElementById('uploadGallery').addEventListener('click', function() {
+  document.getElementById('profilePicture').click();
+});
+
+document.getElementById('profilePicture').addEventListener('change', function(event) {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('previewImage').src = e.target.result;
+    document.getElementById('previewImage').style.display = 'block';
+    document.getElementById('cameraStream').style.display = 'none'; // Hide the camera stream
+    captureButton.style.display = 'none'; // Hide the capture button
+    if (localMediaStream) {
+      localMediaStream.getTracks().forEach(function(track) { // Stop each track on the stream
+        track.stop();
+      });
+      localMediaStream = null; // Clear the global stream variable
+    }
+  };
+  reader.readAsDataURL(event.target.files[0]);
+});
+
+// Function to fetch CSV data and populate the college dropdown
+function populateCollegeDropdown() {
+  fetch('colleges.csv') // Change 'colleges.csv' to your CSV file path
+    .then(response => response.text())
+    .then(csv => {
+      const rows = csv.split('\n').slice(1); // Split CSV by rows and skip header row
+      const collegeDropdown = document.getElementById('collegeName');
+      
+      rows.forEach(row => {
+        const [collegeName] = row.split(','); // Split row by comma
+        const option = document.createElement('option');
+        option.value = collegeName.trim(); // Trim whitespace
+        option.textContent = collegeName.trim();
+        collegeDropdown.appendChild(option);
+      });
+
+      // Initialize Select2 on the populated dropdown
+      $('#collegeName').select2({
+        placeholder: "Select College",
+        allowClear: true
+      });
+    })
+    .catch(error => console.error('Error fetching CSV:', error));
+}
+
+// Call the function to populate the college dropdown when the page loads
+window.addEventListener('DOMContentLoaded', populateCollegeDropdown);
+</script>
+
+</body>
+</html>
