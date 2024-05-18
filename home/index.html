@@ -6,17 +6,119 @@
     <title>Home Page theYukt</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<script>
+    const slider = document.querySelector('.slider');
+const cards = document.querySelectorAll('.card');
+const leftButton = document.querySelector('.slider-button.left');
+const rightButton = document.querySelector('.slider-button.right');
+
+let currentIndex = 0;
+
+function updateCards() {
+    cards.forEach((card, index) => {
+        card.classList.remove('enlarged', 'blurred');
+        if (index === currentIndex) {
+            card.classList.add('enlarged');
+        } else {
+            card.classList.add('blurred');
+        }
+    });
+
+    const offset = -currentIndex * (cards[0].offsetWidth + 20); // 20px is the margin
+    slider.style.transform = `translateX(${offset}px)`;
+}
+
+leftButton.addEventListener('click', () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
+    updateCards();
+});
+
+rightButton.addEventListener('click', () => {
+    currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
+    updateCards();
+});
+
+// Initialize the first state
+updateCards();
+
+</script>
 <body>
-    <div class="nav section">
-    <div class="logo"></div>
-    <div class="nav">
-    <h1 class="tagLine">Talk more,<br> Thrive more</h1>
+    <!-- First Page -->
+    <div class="first-page section">
+        <div class="logo"></div>
+        <pre class="F-tagLine-1">Talk more,<br>       Thrive more</pre>
+        <pre class="F-tagLine-2">-theYukt</pre>
+    
+        <div class="sign-in-button"></div>
     </div>
-    <div class="model">
-        <!--<img src="images/model.png" alt="model" class="model">-->
-     </div>
-     <div class="model2">
-        <img src="images/model2.png" alt="model2" class="model2">
-     </div>>
+
+    <hr>
+
+    <!-- Second Page -->
+    <div class="second-page">
+        <div class="S-tagLine-1">
+            <pre>Struggling to <br> find teammates?
+      No worries...
+Presenting <br></div></pre>
+    <H1 class="S-H1">theYukt</H1>
+    <pre class="S-tagLine-2">Connect with teammates<br> who share your interests</pre>
+        <div class="S-image"></div>
+    </div>
+
+    <hr>
+
+    <!-- Third Page -->
+
+    <div class="third-page section">
+        <div class="T-tagLine-1">
+            <pre>Featured Hackathons for You</pre>
+        </div>
+
+        <div class="slider-container">
+            <button class="slider-button left-button">❮</button>
+            <div class="slider">
+                <div class="card active">
+                    <img src="images/SIH.png" alt="Smart India Hackathon">
+                    <div class="card-content">
+                        <h2>Smart India Hackathon</h2>
+                        <p>Smart India Hackathon is a nationwide initiative to provide students a platform to solve some of pressing problems we face in our daily lives, and thus inculcate a culture of product innovation and a mindset of problem solving.</p>
+                        <a href="hackathons/sih.html" class="card-button">Read more</a>
+                    </div>
+                </div>
+        
+                <div class="card">
+                    <img src="images/SIH.png" alt="Smart India Hackathon">
+                    <div class="card-content">
+                        <h2>Smart India Hackathon</h2>
+                        <p>Smart India Hackathon is a nationwide initiative to provide students a platform to solve some of pressing problems we face in our daily lives, and thus inculcate a culture of product innovation and a mindset of problem solving.</p>
+                        <a href="hackathons/sih.html" class="card-button">Read more</a>
+                    </div>
+                </div>
+        
+                <div class="card">
+                    <img src="images/SIH.png" alt="Smart India Hackathon">
+                    <div class="card-content">
+                        <h2>Smart India Hackathon</h2>
+                        <p>Smart India Hackathon is a nationwide initiative to provide students a platform to solve some of pressing problems we face in our daily lives, and thus inculcate a culture of product innovation and a mindset of problem solving.</p>
+                        <a href="hackathons/sih.html" class="card-button">Read more</a>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-button right-button">❯</button>
+        </div>
+        
+        
+    </div>
+    </div>
+
+    <hr>
+<!-- Forth Page -->
+    <!-- <div class="fourth-page section">
+        <div class=""></div> 
+
+    <hr>-->
+    
+
+
 </body>
 </html>

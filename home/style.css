@@ -2,26 +2,38 @@
     margin: 0;
     font-family: denton;
     border: border-box;
+    box-sizing: border-box;
     text-decoration: none;
     background-color: #000000f3;
     color: white;
 }
 
+hr {
+    height: .063rem;
+    margin: .63rem auto;
+    border: none;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(transparent), to(transparent), color-stop(50%, rgb(255, 255, 255)));
+} 
+
 .section{
-    height: 50vh; 
+    height: 98vh; 
 }
 
-.nav{
+/* First Page */
+
+.first-page{
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
 .logo{
     background-image: url(images/logo-main-page.png);
+    position: relative;
     background-color: transparent ;
-    height: 150px;
-    width: 150px;
+    height: 9.375rem;
+    width: 9.375rem;
     background-size: cover ;
     background-position: center;
     position: absolute;
@@ -30,7 +42,7 @@
 
 }
 
-.tagLine-1{
+.F-tagLine-1{
     font-size: 6.8rem;
     background-color: transparent;
     position: absolute;
@@ -38,7 +50,7 @@
     font-weight: bolder;
 }
 
-.tagLine-2{
+.F-tagLine-2{
     font-size: 1.5rem;
     background-color: transparent;
     position: absolute;
@@ -46,7 +58,147 @@
     right: 17rem;
 }
 
-/* .over{
-    height: 1px;
+/* Second Page */
+
+.second-page{
+    display: flex;
+    /* justify-content: center; */
+    align-items: top;
+    height: 96vh;   
+}
+
+.S-tagLine-1{
+    font-size: 3.65rem;
+    background-color: none;
+    margin-top: 2.8rem;
+    padding-top: 0.5rem;
+    padding-left: 3.75rem;
+    position: absolute;
+}
+
+.S-H1{
+
+    padding-left: 11.875rem;
+    margin-top: 20rem;
+    position: absolute;
+    font-size: 6rem;
+}
+
+.S-tagLine-2{
+    font-size: 3.65rem;
+    background-color: none;
+    padding-left: 3.75rem;
+    margin-top: 26.9rem;
+    position: absolute;
+}
+
+.S-image{
+    height: 400px;
+    width: 550px;
+    margin-top: 8rem;
+    margin-left: 47.188rem;
+    background-image: url(images/logs.png);
+    /* background-color: wheat; */
+}
+
+/* Third Page */
+
+.third-page{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 97vh;
+} 
+
+.T-tagLine-1{
+    font-size: 3.65rem;
+    background-color: none;
+    margin-top: 2.8rem;
+    padding-top: 0.5rem;
+    padding-left: 3.75rem;
+    position: absolute;
+    font-weight: bolder;
+}
+
+.slider-container {
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.card {
+    width: 20rem;
+    background-color: #0a0a0a;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    margin: 0 20px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+    color: white;
+}
+
+.card-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.card-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card-button {
+    padding: 0.5rem 1rem;
+    background-color: #ff9900;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.slider-button.left {
+    left: 10px;
+}
+
+.slider-button.right {
+    right: 10px;
+}
+
+.card.enlarged {
+    transform: scale(1.2);
+    z-index: 1;
+}
+
+.card.blurred {
+    filter: blur(4px);
+    transform: scale(0.9);
 }
