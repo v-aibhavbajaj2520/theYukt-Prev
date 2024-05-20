@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: denton;
+    border: border-box;
+    text-decoration: none;
+    background-color: #000000f3;
+    color: white;
+}
+
+.doc{
+    height: 150vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.vl {
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+    height: 1000px;
+    position: absolute;
+    left: 10rem;
+    margin-left: -3px;
+    top: 0;
+  }
+
+.logo{
+    height: 120px;
+    width: 120px;
+    background-image: url(images/logo-main-page.png);
+    background-size: cover;
+    position: relative;
+}
+
+.nav-bar{
+    position: sticky;
+    width: 150px;
+    padding-bottom: 40px;
+}
+
+.nav-links{
+    padding: 20px;
+}
+
+.nav-links a{
+    color: white;
+    font-size: 2rem;
+}
+

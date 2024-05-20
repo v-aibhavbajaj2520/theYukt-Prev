@@ -2,7 +2,6 @@
     margin: 0;
     font-family: denton;
     border: border-box;
-    box-sizing: border-box;
     text-decoration: none;
     background-color: #000000f3;
     color: white;
@@ -25,6 +24,8 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(images/first-section-removebg.png);
+    background-size: cover;
 }
 
 
@@ -105,9 +106,10 @@ hr {
 
 .third-page{
     display: flex;
+    position: relative;
     justify-content: center;
     /* align-items: center; */
-    height: 97vh;
+    height: 107vh;
 } 
 
 .T-tagLine-1{
@@ -120,23 +122,27 @@ hr {
     font-weight: bolder;
 }
 
-.slider-container {
-    position: relative;
+
+  .slider-container {
+    position: absolute;
+    top: 110px; /* Adjust this value to position the slider vertically within .third-page */
+    left: 50%;
+    transform: translateX(-50%); /* Center the slider horizontally */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-}
+  }
 
-.slider {
+.slider-1 {
+    margin: 6.25rem;
     display: flex;
     transition: transform 0.5s ease;
 }
 
 .card {
-    width: 20rem;
-    background-color: #0a0a0a;
+    width: 22rem;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -146,11 +152,11 @@ hr {
 
 .card img {
     width: 100%;
-    height: auto;
+    height: 7.813rem;
     object-fit: cover;
 }
 
-.card-content {
+.card-content, .card-content-2 {
     padding: 1.5rem;
     color: white;
 }
@@ -165,6 +171,16 @@ hr {
     margin-bottom: 1rem;
 }
 
+.card-content-2 h2 {
+    font-size: 2rem;
+    margin-bottom: 3.3rem;
+}
+
+.card-content-2 p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
 .card-button {
     padding: 0.5rem 1rem;
     background-color: #ff9900;
@@ -174,31 +190,313 @@ hr {
     text-align: center;
 }
 
-.slider-button {
+/* Fourth Page */
+
+.fourth-page{
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    background-image: url(images/forth.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position:static;
+}
+
+
+.Fo-tagLine-1{
+    font-size: 2rem;
+    background-color: none;
+    margin-top: 2.8rem;
+    padding-top: 0.5rem;
+    padding-left: 3.75rem;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    padding: 1rem;
-    cursor: pointer;
-    z-index: 10;
+    font-weight: bolder;
 }
 
-.slider-button.left {
-    left: 10px;
+/* Fifth Page */
+
+.fifth-page{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
 }
 
-.slider-button.right {
-    right: 10px;
+.Fi-tagLine-1{
+    font-size: 3.65rem;
+    background-color: none;
+    margin-top: 2.8rem;
+    padding-top: 0.5rem;
+    padding-left: 3.75rem;
+    position: absolute;
+    font-weight: bolder;
 }
 
-.card.enlarged {
-    transform: scale(1.2);
+
+
+.testimonial {
+    text-align: center;
+    color: #F2EFE8;
+    margin: 80px 30px;
+    padding: 30px 40px;
+    border-radius: 30px;
+    position: relative;
     z-index: 1;
+  }
+  
+  .testimonial:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #424242;
+    border-radius: 30px;
+    z-index: -1;
+  }
+  
+  .testimonial:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FB8C00;
+    border-radius: 30px;
+    transform: rotate(-7deg);
+    z-index: -2;
+  }
+  
+  .testimonial .pic {
+    border: 5px solid #F2EFE8;
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .testimonial .pic img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+  
+  .testimonial .testimonial-content {
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial .testimonial-title a {
+    display: inline-block;
+    color: #FB8C00;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .testimonial .testimonial-title small {
+    color: #F2EFE8;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+  }
+
+
+/* Sixth Page */
+
+.sixth-page{
+    height: 130vh;
+    display: flex;
+    justify-content: center;
 }
 
-.card.blurred {
-    filter: blur(4px);
-    transform: scale(0.9);
+.Sixth-tagLine-1{
+    font-size: 4rem;
+    background-color: none;
+    margin-top: 2.8rem;
+    padding-top: 0.5rem;
+    padding-left: 3.75rem;
+    position: absolute;
+    font-weight: bolder;
+}
+
+.glance-images{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 5rem;
+    margin-top: 6.75rem;
+}
+
+.G-image-1{
+    height: 10rem;
+    width: 15rem;
+    margin: 1rem;
+    border-radius: 8px;
+    background-size: cover;
+}
+
+.G-image-2{
+    height: 10rem;
+    width: 12rem;
+    margin: 1rem;
+    border-radius: 8px;
+    background-size: cover;
+}
+
+.G-image1{
+    background-image: url(glance-images/image-1.jpeg);
+}
+
+.G-image2{
+    background-image: url(glance-images/image-2.jpeg);
+}
+
+.G-image3{
+    background-image: url(glance-images/image-3.jpeg);
+}
+
+.G-image4{
+    background-image: url(glance-images/image-4.jpeg);
+}
+
+.G-image5{
+    background-image: url(glance-images/image-5.jpeg);
+}
+
+.G-image6{
+    background-image: url(glance-images/image-6.jpeg);
+}
+
+.G-image7{
+    background-image: url(glance-images/image-7.jpeg);
+}
+
+.G-image8{
+    background-image: url(glance-images/image-8.jpeg);
+}
+
+.G-image9{
+    background-image: url(glance-images/image-9.jpeg);
+}
+
+.G-image10{
+    background-image: url(glance-images/image-10.jpeg);
+}
+
+.G-image11{
+    background-image: url(glance-images/image-11.jpeg);
+}
+
+.G-image12{
+    background-image: url(glance-images/image-12.jpeg);
+}
+
+
+/* Seventh Page */
+
+.seventh-page{
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+}
+
+.Seventh-tagLine-1{
+    font-size: 2.5rem;
+    background-color: none;
+    margin-top: rem;
+    padding-top: 0.5rem;
+    padding-left: 3.5rem;
+    position: absolute;
+    font-weight: bolder;
+}
+
+/* Compiled white-gradient mixin */
+.white-gradient {
+	background: linear-gradient(to right,  rgb(0, 0, 0) 0%,rgba(255,255,255,0) 100%);
+}
+
+/* Animation */
+@keyframes scroll {
+	0% { transform: translateX(0); }
+	100% { transform: translateX(calc(-250px * 7)); /* Ensure this matches the total width of all slides */}
+}
+
+/* Styling */
+.slider {
+	background: rgb(0, 0, 0);
+	box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+	height: 100px;
+	margin: auto;
+	overflow: hidden;
+	position: relative;
+	width: 960px;
+}
+
+.slider::before,
+.slider::after {
+	content: "";
+	height: 100px;
+	position: absolute;
+	width: 200px;
+	z-index: 2;
+	background: linear-gradient(to right,  #000000 0%,rgba(255,255,255,0) 100%);
+}
+
+.slider::after {
+	right: 0;
+	top: 0;
+	transform: rotateZ(180deg);
+}
+
+.slider::before {
+	left: 0;
+	top: 0;
+}
+
+.slide-track {
+	animation: scroll 40s linear infinite; /* Use the compiled variable value */
+	display: flex;
+	width: calc(250px * 14); /* Adjust as needed */
+}
+
+.slide {
+	height: 100px;
+	width: 250px;
+}
+
+/* Footer */
+
+footer {
+    height: 50vh;
+    display: flex;
+    background-color: linear-gradient(to, #000000 100%, #594425 50%);
+    color: #fff; /* Change the text color to white */
+    font-size: 14px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    display: flex;
+    background-color: transparent;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%; /* Add this line to make the footer content span the full width */
+}
+
+.about h1{
+    background-color: transparent; /* Set the background color to transparent */
+    color: #fff; /* Change the text color to white */
+    font-size: 14px;
+    padding: 0 1rem; /* Add some horizontal padding for better spacing */
 }

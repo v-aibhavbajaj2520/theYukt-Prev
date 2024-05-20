@@ -6,42 +6,7 @@
     <title>Home Page theYukt</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-    const slider = document.querySelector('.slider');
-const cards = document.querySelectorAll('.card');
-const leftButton = document.querySelector('.slider-button.left');
-const rightButton = document.querySelector('.slider-button.right');
 
-let currentIndex = 0;
-
-function updateCards() {
-    cards.forEach((card, index) => {
-        card.classList.remove('enlarged', 'blurred');
-        if (index === currentIndex) {
-            card.classList.add('enlarged');
-        } else {
-            card.classList.add('blurred');
-        }
-    });
-
-    const offset = -currentIndex * (cards[0].offsetWidth + 20); // 20px is the margin
-    slider.style.transform = `translateX(${offset}px)`;
-}
-
-leftButton.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : cards.length - 1;
-    updateCards();
-});
-
-rightButton.addEventListener('click', () => {
-    currentIndex = (currentIndex < cards.length - 1) ? currentIndex + 1 : 0;
-    updateCards();
-});
-
-// Initialize the first state
-updateCards();
-
-</script>
 <body>
     <!-- First Page -->
     <div class="first-page section">
@@ -75,8 +40,8 @@ Presenting <br></div></pre>
         </div>
 
         <div class="slider-container">
-            <button class="slider-button left-button">❮</button>
-            <div class="slider">
+            <!-- <button class="slider-button left-button">❮</button> -->
+            <div class="slider-1">
                 <div class="card active">
                     <img src="images/SIH.png" alt="Smart India Hackathon">
                     <div class="card-content">
@@ -87,10 +52,10 @@ Presenting <br></div></pre>
                 </div>
         
                 <div class="card">
-                    <img src="images/SIH.png" alt="Smart India Hackathon">
-                    <div class="card-content">
-                        <h2>Smart India Hackathon</h2>
-                        <p>Smart India Hackathon is a nationwide initiative to provide students a platform to solve some of pressing problems we face in our daily lives, and thus inculcate a culture of product innovation and a mindset of problem solving.</p>
+                    <img src="images/Hack-Utsav.jpeg" alt="Smart India Hackathon">
+                    <div class="card-content-2">
+                        <h2>Hack Utsav</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, repellat ea nulla veniam unde vel incidunt nobis sapiente blanditiis ullam dolorem tempora numquam provident. Doloremque consequatur saepe dolore aspernatur ullam!</p>
                         <a href="hackathons/sih.html" class="card-button">Read more</a>
                     </div>
                 </div>
@@ -104,21 +69,210 @@ Presenting <br></div></pre>
                     </div>
                 </div>
             </div>
-            <button class="slider-button right-button">❯</button>
+            <!-- <button class="slider-button right-button">❯</button> -->
         </div>
-        
-        
-    </div>
     </div>
 
     <hr>
+
 <!-- Forth Page -->
-    <!-- <div class="fourth-page section">
-        <div class=""></div> 
+    <div class="fourth-page section">
+        <div class="Fo-tagLine-1">
+            <p>Planning to host a Hackathon?</p>
+        </div> 
+    </div>
 
-    <hr>-->
+    <hr>
+
+    <!-- Fifth Page -->
+    <div class="fifth-page section">
+        <div class="Fi-tagLine-1">
+            <pre>Testimonials</pre>
+        </div>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+    <link rel="stylesheet" href="check.css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-2 col-md-8">
+            <div id="testimonial-slider" class="owl-carousel">
+                <div class="testimonial">
+                    <div class="pic">
+                        <img src="images/VB.jpeg">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>TheYukt revolutionized my learning with its intuitive design and rich content. 
+                            It's an essential daily resource.
+                        </p>
+                    </div>
+                    <h3 class="testimonial-title">
+                        <a href="#">Vaibhav Bajaj</a>
+                        <small>- Student </small>
+                    </h3>
+                </div>
+
+                <div class="testimonial">
+                    <div class="pic">
+                        <img src="images/VR.jpeg">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>TheYukt blends simplicity with depth, making complex topics accessible and engaging. 
+                            A true knowledge companion.
+                        </p>
+                    </div>
+                    <h3 class="testimonial-title">
+                        <a href="#">Vaibhav Raj</a>
+                        <small>- Student </small>
+                    </h3>
+                </div>
+
+                <div class="testimonial">
+                    <div class="pic">
+                        <img src="images/AS.jpeg">
+                    </div>
+                    <div class="testimonial-content">
+                        <p>TheYukt's insightful content has been a catalyst for my professional growth. 
+                            Invaluable and inspiring.
+                        </p>
+                    </div>
+                    <h3 class="testimonial-title">
+                        <a href="#">Archita Srivastava</a>
+                        <small>- Student </small>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#testimonial-slider').owlCarousel({
+            items:1,
+            itemsDesktop:[1000,1],
+            itemsDesktopSmall:[979,1],
+            itemsTablet:[768,1],
+            pagination: false,
+            navigation:true,
+            navigationText:["",""],
+            slideSpeed:1000,
+            autoPlay:true
+        });
+    });
+</script>
+               
     
+    </div>
 
+    <hr>
+    
+    <!-- Sixth Page -->
+    <div class="sixth-page section">
+        <div class="Sixth-tagLine-1">
+            <p>Glances of our Events</p>
+        </div>
+            <div class="glance-images">
+                <div class="G-image1 G-image-1"></div>
+                <div class="G-image2 G-image-2"></div>
+                <div class="G-image3 G-image-1"></div>
+                <div class="G-image4 G-image-2"></div>
+                <div class="G-image6 G-image-2"></div>
+                <div class="G-image5 G-image-1"></div>
+                <div class="G-image8 G-image-2"></div>
+                <div class="G-image7 G-image-1"></div>
+                <div class="G-image9 G-image-1"></div>
+                <div class="G-image10 G-image-2"></div>
+                <div class="G-image11 G-image-1"></div>
+                <div class="G-image12 G-image-2"></div>
+            </div>
+        </div> 
+    </div>
+
+    <hr>
+
+    <!-- Seventh Page -->
+    <div class="seventh-page section">
+        <div class="Seventh-tagLine-1">
+            <p>Our Sponsors</p>
+        </div> 
+
+        <div class="slider">
+            <link rel="stylesheet" href="check.css">
+              <div class="slide-track">
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+                  </div>
+                  <div class="slide">
+                      <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+                  </div>
+              </div>
+          </div>
+
+    </div>
+
+    <hr>
+
+    
+    <footer>
+         <div class="footer-content">
+            <div class="footer-section about">
+                <h1 class="logo-text">theYukt</h1>
+                <p>
+                    theYukt is a platform that connects students and professionals to collaborate on projects and solve real-world problems.
+                </p>
+         </div>
+
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <a href="#"><li>Events</li></a>
+                    <a href="#"><li>Testimonials</li></a>
+                    <a href="#"><li>Our Sponsors</li></a>
+                </ul>
+
+    </footer>
 
 </body>
 </html>
